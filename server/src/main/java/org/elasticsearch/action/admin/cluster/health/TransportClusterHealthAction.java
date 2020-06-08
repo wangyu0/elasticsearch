@@ -51,6 +51,9 @@ import java.io.IOException;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+/**
+ * 处理请求 GET _cluster/health
+ */
 public class TransportClusterHealthAction extends TransportMasterNodeReadAction<ClusterHealthRequest, ClusterHealthResponse> {
 
     private static final Logger logger = LogManager.getLogger(TransportClusterHealthAction.class);
@@ -85,7 +88,7 @@ public class TransportClusterHealthAction extends TransportMasterNodeReadAction<
 
     @Override
     protected final void masterOperation(ClusterHealthRequest request, ClusterState state,
-                                         ActionListener<ClusterHealthResponse> listener) throws Exception {
+                                         ActionListener<ClusterHealthResponse> LISTENER) throws Exception {
         logger.warn("attempt to execute a cluster health operation without a task");
         throw new UnsupportedOperationException("task parameter is required for this operation");
     }

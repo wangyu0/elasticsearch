@@ -473,6 +473,10 @@ public class ActionModule extends AbstractModule {
         return actions;
     }
 
+    /**
+     * @param actionPlugins 插件形式的action, 允许用户自定义
+     * @return Map<String, ActionHandler < ?, ?>>
+     */
     static Map<String, ActionHandler<?, ?>> setupActions(List<ActionPlugin> actionPlugins) {
         // Subclass NamedRegistry for easy registration
         class ActionRegistry extends NamedRegistry<ActionHandler<?, ?>> {
