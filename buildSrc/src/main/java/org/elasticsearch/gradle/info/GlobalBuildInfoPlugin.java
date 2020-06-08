@@ -211,7 +211,7 @@ public class GlobalBuildInfoPlugin implements Plugin<Project> {
     }
 
     private static File findCompilerJavaHome() {
-        String compilerJavaHome = System.getenv("JAVA_HOME");
+        String compilerJavaHome = "/Library/Java/JavaVirtualMachines/jdk-14.0.1.jdk/Contents/Home";
         String compilerJavaProperty = System.getProperty("compiler.java");
 
         if (compilerJavaProperty != null) {
@@ -233,7 +233,7 @@ public class GlobalBuildInfoPlugin implements Plugin<Project> {
     }
 
     private static String findJavaHome(String version) {
-        String versionedJavaHome = System.getenv(getJavaHomeEnvVarName(version));
+        String versionedJavaHome = "/Library/Java/JavaVirtualMachines/jdk-14.0.1.jdk/Contents/Home";
         if (versionedJavaHome == null) {
             final String exceptionMessage = String.format(
                 Locale.ROOT,

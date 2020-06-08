@@ -161,14 +161,26 @@ public class ClusterState implements ToXContentFragment, Diffable<ClusterState> 
 
     public static final long UNKNOWN_VERSION = -1;
 
+    /**
+     * 当前版本号，每次更新加1，即便集群重启version仍会增加
+     */
     private final long version;
 
     private final String stateUUID;
 
+    /**
+     * 集群中所有index的路由表，即集群中全部索引的各个分片在集群节点上的分布信息
+     */
     private final RoutingTable routingTable;
 
+    /**
+     * 集群全部节点信息
+     */
     private final DiscoveryNodes nodes;
 
+    /**
+     * 集群的meta数据，主要包括所有索引的mappings和settings配置
+     */
     private final MetaData metaData;
 
     private final ClusterBlocks blocks;

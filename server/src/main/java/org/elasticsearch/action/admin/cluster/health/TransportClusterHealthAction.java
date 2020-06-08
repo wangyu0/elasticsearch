@@ -342,7 +342,16 @@ public class TransportClusterHealthAction extends TransportMasterNodeReadAction<
         return waitForCounter;
     }
 
-
+    /**
+     * 集群健康状态探查
+     *
+     * @param request
+     * @param clusterState  集群状态
+     * @param numberOfPendingTasks
+     * @param numberOfInFlightFetch
+     * @param pendingTaskTimeInQueue
+     * @return
+     */
     private ClusterHealthResponse clusterHealth(ClusterHealthRequest request, ClusterState clusterState, int numberOfPendingTasks,
                                                 int numberOfInFlightFetch, TimeValue pendingTaskTimeInQueue) {
         if (logger.isTraceEnabled()) {

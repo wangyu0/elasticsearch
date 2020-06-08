@@ -88,7 +88,7 @@ public class InternalSettingsPreparer {
 
         // re-initialize settings now that the config file has been loaded
         initializeSettings(output, input, properties);
-        checkSettingsForTerminalDeprecation(output);
+//        checkSettingsForTerminalDeprecation(output);
         finalizeSettings(output, defaultNodeName);
 
         return new Environment(output.build(), configPath);
