@@ -116,12 +116,14 @@ public final class ClusterIndexHealth implements Iterable<ClusterShardHealth>, W
         this.numberOfReplicas = indexMetaData.getNumberOfReplicas();
 
         shards = new HashMap<>();
+        // 以分片shard维度，统计分片的副本哪些被分配了，哪些未分配, 并决定单个shard的状态
         for (IndexShardRoutingTable shardRoutingTable : indexRoutingTable) {
             int shardId = shardRoutingTable.shardId().id();
             shards.put(shardId, new ClusterShardHealth(shardId, shardRoutingTable));
         }
 
         // update the index status
+        // 汇总所有副本的状态为index的状态
         ClusterHealthStatus computeStatus = ClusterHealthStatus.GREEN;
         int computeActivePrimaryShards = 0;
         int computeActiveShards = 0;
@@ -141,6 +143,7 @@ public final class ClusterIndexHealth implements Iterable<ClusterShardHealth>, W
                 computeStatus = ClusterHealthStatus.RED;
             } else if (shardHealth.getStatus() == ClusterHealthStatus.YELLOW && computeStatus != ClusterHealthStatus.RED) {
                 // do not override an existing red
+                // 不允许覆盖红色状态
                 computeStatus = ClusterHealthStatus.YELLOW;
             }
         }

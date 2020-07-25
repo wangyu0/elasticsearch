@@ -349,18 +349,18 @@ public class TransportClusterHealthAction extends TransportMasterNodeReadAction<
      * 集群健康状态探查
      *
      * @param request
-     * @param clusterState  集群状态
+     * @param clusterState           master集群状态
      * @param numberOfPendingTasks
      * @param numberOfInFlightFetch
      * @param pendingTaskTimeInQueue
-     * @return
+     * @return ClusterHealthResponse
      */
     private ClusterHealthResponse clusterHealth(ClusterHealthRequest request, ClusterState clusterState, int numberOfPendingTasks,
                                                 int numberOfInFlightFetch, TimeValue pendingTaskTimeInQueue) {
         if (logger.isTraceEnabled()) {
             logger.trace("Calculating health based on state version [{}]", clusterState.version());
         }
-
+        // 具体指标， 其实就是要找目前集群下的所有index
         String[] concreteIndices;
         try {
             concreteIndices = indexNameExpressionResolver.concreteIndexNames(clusterState, request);

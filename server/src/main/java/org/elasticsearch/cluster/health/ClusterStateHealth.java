@@ -67,6 +67,7 @@ public final class ClusterStateHealth implements Iterable<ClusterIndexHealth>, W
     public ClusterStateHealth(final ClusterState clusterState, final String[] concreteIndices) {
         numberOfNodes = clusterState.nodes().getSize();
         numberOfDataNodes = clusterState.nodes().getDataNodes().size();
+        // 统计所有index的状态
         indices = new HashMap<>();
         for (String index : concreteIndices) {
             IndexRoutingTable indexRoutingTable = clusterState.routingTable().index(index);
@@ -79,7 +80,7 @@ public final class ClusterStateHealth implements Iterable<ClusterIndexHealth>, W
 
             indices.put(indexHealth.getIndex(), indexHealth);
         }
-
+        // 汇总所有index的状态为集群的状态
         ClusterHealthStatus computeStatus = ClusterHealthStatus.GREEN;
         int computeActivePrimaryShards = 0;
         int computeActiveShards = 0;

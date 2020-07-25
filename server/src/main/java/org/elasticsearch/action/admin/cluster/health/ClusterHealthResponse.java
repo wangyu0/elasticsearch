@@ -161,6 +161,15 @@ public class ClusterHealthResponse extends ActionResponse implements StatusToXCo
         this(clusterName, concreteIndices, clusterState, -1, -1, -1, TimeValue.timeValueHours(0));
     }
 
+    /**
+     * @param clusterName             集群名称
+     * @param concreteIndices         具体指标
+     * @param clusterState            master集群状态
+     * @param numberOfPendingTasks
+     * @param numberOfInFlightFetch
+     * @param delayedUnassignedShards
+     * @param taskMaxWaitingTime
+     */
     public ClusterHealthResponse(String clusterName, String[] concreteIndices, ClusterState clusterState, int numberOfPendingTasks,
                                  int numberOfInFlightFetch, int delayedUnassignedShards, TimeValue taskMaxWaitingTime) {
         this.clusterName = clusterName;

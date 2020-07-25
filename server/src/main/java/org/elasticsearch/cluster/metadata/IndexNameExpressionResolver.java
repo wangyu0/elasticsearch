@@ -59,6 +59,9 @@ import java.util.stream.StreamSupport;
 
 import static java.util.Collections.unmodifiableList;
 
+/**
+ * 索引名称表达式解析器
+ */
 public class IndexNameExpressionResolver {
 
     private final DateMathExpressionResolver dateMathExpressionResolver = new DateMathExpressionResolver();
@@ -138,6 +141,12 @@ public class IndexNameExpressionResolver {
         return concreteIndices(context, indexExpressions);
     }
 
+    /**
+     *
+     * @param context context
+     * @param indexExpressions indexExpressions
+     * @return String[] 当前集群内处于open状态的所有index的名字
+     */
     String[] concreteIndexNames(Context context, String... indexExpressions) {
         Index[] indexes = concreteIndices(context, indexExpressions);
         String[] names = new String[indexes.length];
@@ -151,6 +160,7 @@ public class IndexNameExpressionResolver {
         if (indexExpressions == null || indexExpressions.length == 0) {
             indexExpressions = new String[]{MetaData.ALL};
         }
+        // 获取元数据，进而拿到index,   但是服务启动时的元数据是谁存进来的?
         MetaData metaData = context.getState().metaData();
         IndicesOptions options = context.getOptions();
         final boolean failClosed = options.forbidClosedIndices() && options.ignoreUnavailable() == false;
@@ -159,6 +169,7 @@ public class IndexNameExpressionResolver {
         // or multiple indices are specified yield different behaviour.
         final boolean failNoIndices = indexExpressions.length == 1 ? !options.allowNoIndices() : !options.ignoreUnavailable();
         List<String> expressions = Arrays.asList(indexExpressions);
+        // 两个默认的表达式解析，时间和索引别名
         for (ExpressionResolver expressionResolver : expressionResolvers) {
             expressions = expressionResolver.resolve(context, expressions);
         }

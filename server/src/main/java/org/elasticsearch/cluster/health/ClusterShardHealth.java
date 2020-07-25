@@ -87,6 +87,7 @@ public final class ClusterShardHealth implements Writeable, ToXContentFragment {
         int computeRelocatingShards = 0;
         int computeInitializingShards = 0;
         int computeUnassignedShards = 0;
+        // 为什么是1个激活，1个未分配
         for (ShardRouting shardRouting : shardRoutingTable) {
             if (shardRouting.active()) {
                 computeActiveShards++;
