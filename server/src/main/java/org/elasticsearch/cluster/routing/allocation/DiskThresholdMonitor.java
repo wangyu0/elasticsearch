@@ -61,6 +61,9 @@ import java.util.stream.StreamSupport;
  * Listens for a node to go over the high watermark and kicks off an empty
  * reroute if it does. Also responsible for logging about nodes that have
  * passed the disk watermarks
+ * 侦听节点越过高水位线并开始一个空节点
+ * 如果需要，则会重新路由。 还负责记录具有以下内容的节点
+ * 通过磁盘水印
  */
 public class DiskThresholdMonitor {
 

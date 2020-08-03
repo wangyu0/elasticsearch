@@ -237,6 +237,7 @@ public class MasterService extends AbstractLifecycleComponent {
             try {
                 ClusterChangedEvent clusterChangedEvent = new ClusterChangedEvent(summary, newClusterState, previousClusterState);
                 // new cluster state, notify all listeners
+                // diff 两个clusterState, 仅有node发生了变化，还未发生shard的reroute, 是因为磁盘剩余空间不够
                 final DiscoveryNodes.Delta nodesDelta = clusterChangedEvent.nodesDelta();
                 if (nodesDelta.hasChanges() && logger.isInfoEnabled()) {
                     String nodesDeltaSummary = nodesDelta.shortSummary();

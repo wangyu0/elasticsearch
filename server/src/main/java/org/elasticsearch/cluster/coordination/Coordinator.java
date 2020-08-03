@@ -95,6 +95,10 @@ import static org.elasticsearch.cluster.coordination.NoMasterBlockService.NO_MAS
 import static org.elasticsearch.gateway.ClusterStateUpdaters.hideStateIfNotRecovered;
 import static org.elasticsearch.gateway.GatewayService.STATE_NOT_RECOVERED_BLOCK;
 
+/**
+ * Coordinator
+ * 节点通信，交互
+ */
 public class Coordinator extends AbstractLifecycleComponent implements Discovery {
 
     public static final long ZEN1_BWC_TERM = 0;

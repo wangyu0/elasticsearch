@@ -23,6 +23,7 @@ import org.elasticsearch.cluster.ClusterState;
 import org.elasticsearch.common.Priority;
 
 /**
+ * 异步执行集群重新路由，更新所有分片状态并在适当时重新平衡集群
  * Asynchronously performs a cluster reroute, updating any shard states and rebalancing the cluster if appropriate.
  */
 @FunctionalInterface

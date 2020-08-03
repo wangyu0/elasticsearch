@@ -76,6 +76,10 @@ public class AllocationService {
 
     private final AllocationDeciders allocationDeciders;
     private GatewayAllocator gatewayAllocator;
+
+    /**
+     * BalancedShardsAllocator， es唯一的一个实现
+     */
     private final ShardsAllocator shardsAllocator;
     private final ClusterInfoService clusterInfoService;
 
