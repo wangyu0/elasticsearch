@@ -35,6 +35,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
+ * 使用优先级队列作为工作队列的优先执行器。 将要提交的工作将被处理
+ *   *作为{@link PrioritizedRunnable}和/或{@link PrioritizedCallable}，那些不是这两个实例的任务将
+ *   *被包装并分配默认的{@link Priority＃NORMAL}优先级。
+ *   * <p>
+ *   *请注意，如果两个任务具有相同的优先级，则将首先执行第一个到达的任务（FIFO样式）。
+ *
  * A prioritizing executor which uses a priority queue as a work queue. The jobs that will be submitted will be treated
  * as {@link PrioritizedRunnable} and/or {@link PrioritizedCallable}, those tasks that are not instances of these two will
  * be wrapped and assign a default {@link Priority#NORMAL} priority.

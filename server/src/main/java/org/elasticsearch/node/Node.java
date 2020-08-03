@@ -280,7 +280,7 @@ public class Node implements Closeable {
         try {
             Settings tmpSettings = Settings.builder().put(initialEnvironment.settings())
                 .put(Client.CLIENT_TYPE_SETTING_S.getKey(), CLIENT_TYPE).build();
-
+            // load metaData (nodeId, nodeVersion)
             nodeEnvironment = new NodeEnvironment(tmpSettings, initialEnvironment);
             resourcesToClose.add(nodeEnvironment);
             logger.info("node name [{}], node ID [{}], cluster name [{}]",
@@ -332,6 +332,7 @@ public class Node implements Closeable {
 
             // create the environment based on the finalized (processed) view of the settings
             // this is just to makes sure that people get the same settings, no matter where they ask them from
+            // 封装了一层settings, 设置了clusterName
             this.environment = new Environment(settings, initialEnvironment.configFile());
             Environment.assertEquivalent(initialEnvironment, this.environment);
 

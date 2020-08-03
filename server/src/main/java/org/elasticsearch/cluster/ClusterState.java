@@ -183,6 +183,9 @@ public class ClusterState implements ToXContentFragment, Diffable<ClusterState> 
      */
     private final MetaData metaData;
 
+    /**
+     * 系统限制
+     */
     private final ClusterBlocks blocks;
 
     private final ImmutableOpenMap<String, Custom> customs;

@@ -257,8 +257,10 @@ public class PersistedClusterStateService {
         String nodeId = null;
         Version version = null;
         for (final Path dataPath : dataPaths) {
+            // metaData存放在每个node目录下的_state下
             final Path indexPath = dataPath.resolve(METADATA_DIRECTORY_NAME);
             if (Files.exists(indexPath)) {
+                // 这个reader是lucene包下的，不是es的东西,
                 try (DirectoryReader reader = DirectoryReader.open(new SimpleFSDirectory(dataPath.resolve(METADATA_DIRECTORY_NAME)))) {
                     final Map<String, String> userData = reader.getIndexCommit().getUserData();
                     assert userData.get(NODE_VERSION_KEY) != null;

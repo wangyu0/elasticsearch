@@ -334,6 +334,7 @@ final class Bootstrap {
 
     /**
      * This method is invoked by {@link Elasticsearch#main(String[])} to startup elasticsearch.
+     * @param initialEnv 这里面有相关文件路径的fs,便于读取相关配置, 由EnvironmentAwareCommand#createEnv()创建出来
      */
     static void init(
             final boolean foreground,

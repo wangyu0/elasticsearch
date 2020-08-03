@@ -160,7 +160,7 @@ public class IndexNameExpressionResolver {
         if (indexExpressions == null || indexExpressions.length == 0) {
             indexExpressions = new String[]{MetaData.ALL};
         }
-        // 获取元数据，进而拿到index,   但是服务启动时的元数据是谁存进来的?
+        // 获取元数据，进而拿到index,   但是服务启动时的元数据是谁存进来的? {@link Node}
         MetaData metaData = context.getState().metaData();
         IndicesOptions options = context.getOptions();
         final boolean failClosed = options.forbidClosedIndices() && options.ignoreUnavailable() == false;

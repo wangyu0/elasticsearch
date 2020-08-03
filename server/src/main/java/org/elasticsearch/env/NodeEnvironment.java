@@ -401,6 +401,7 @@ public final class NodeEnvironment  implements Closeable {
 
     /**
      * scans the node paths and loads existing metaData file. If not found a new meta data will be generated
+     * 扫描节点路径并载入已经存在的metaData信息，如果未找到则生成一个新的metaData
      */
     private static NodeMetaData loadNodeMetaData(Settings settings, Logger logger,
                                                  NodePath... nodePaths) throws IOException {

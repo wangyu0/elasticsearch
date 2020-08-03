@@ -26,11 +26,22 @@ import java.io.IOException;
 
 public enum Priority {
 
+    /**
+     * 即刻，立即
+     */
     IMMEDIATE((byte) 0),
+
+    /**
+     * 紧急
+     */
     URGENT((byte) 1),
     HIGH((byte) 2),
     NORMAL((byte) 3),
     LOW((byte) 4),
+
+    /**
+     * 懒
+     */
     LANGUID((byte) 5);
 
     public static Priority readFrom(StreamInput input) throws IOException {

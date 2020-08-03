@@ -59,6 +59,12 @@ import static org.elasticsearch.cluster.routing.UnassignedInfo.INDEX_DELAYED_NOD
 
 
 /**
+ * 此服务管理集群的节点分配
+ * 功能:
+ * 1. 给node分配shard
+ * 2. 处理新的node加入集群
+ * 3. node退出集群后的重新路由shard
+ *
  * This service manages the node allocation of a cluster. For this reason the
  * {@link AllocationService} keeps {@link AllocationDeciders} to choose nodes
  * for shard allocation. This class also manages new nodes joining the cluster
